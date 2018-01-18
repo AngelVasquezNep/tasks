@@ -15,7 +15,7 @@
       <form id="formu"  @submit.prevent="addTask" action="index.html" method="post">
         <div class="">
           <label for="tasktitle">New Task: </label>
-          <input type="text" id="tasktitle" v-model="newTask.title"required name="" value="" placeholder="Enter your task"size="35">
+          <input type="text" id="tasktitle" v-model="newTask.title"required name="" value="" placeholder="Enter your task"size="27">
         </div>
         <div class="">
           <label for="tasktime">Time: </label>
@@ -240,7 +240,7 @@ export default {
     margin: 5px;
     transition: .2s;
   }
-  
+
   input[type="button"], input[type="submit"], input[type="text"], input[type="number"]{
     font-size: 1em;
   }
