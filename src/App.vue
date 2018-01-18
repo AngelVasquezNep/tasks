@@ -2,7 +2,7 @@
   <div id="app">
     <!-- <p>Soy: {{name}}</p> -->
       <div id="banner" >
-        <img src="../dist/background.jpg" alt="image background">
+        <img src="dist/background.jpg" alt="image background">
         <label class="banner" for="tasktitle">Add your task</label>
       </div>
 
