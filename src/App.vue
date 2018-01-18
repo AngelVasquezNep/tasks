@@ -240,6 +240,10 @@ export default {
     margin: 5px;
     transition: .2s;
   }
+  
+  input[type="button"], input[type="submit"], input[type="text"], input[type="number"]{
+    font-size: 1em;
+  }
 
   @media screen and (max-width: 900px){
     .banner{
