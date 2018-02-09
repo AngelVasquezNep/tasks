@@ -3,23 +3,27 @@
     <!-- <p>Soy: {{name}}</p> -->
       <div id="banner" >
         <img src="dist/background.jpg" alt="image background">
-        <label class="banner" for="tasktitle">Add your task</label>
+        <div class="banner">
+          <a href="#tasks">Add your task</a>
+          </div>
       </div>
 
-      <h1>Notes by {{name}}</h1><span class="change" @click="changeUser">↺</span>
+      <h1 id="tasks">Notes by {{name}}</h1>
+      <span class="change" @click="changeUser">↺</span>
 
       <div class="" v-show="!saved">
-        <input type="text" v-model="name" name="" value="" ><button type="button" name="button" @click="saveUser">Save</button>
+        <input type="text" v-model="name" name="" value="" >
+        <button name="button" @click="saveUser" class="save">Save</button>
       </div>
 
       <form id="formu"  @submit.prevent="addTask" action="index.html" method="post">
         <div class="">
           <label for="tasktitle">New Task: </label>
-          <input type="text" id="tasktitle" v-model="newTask.title"required name="" value="" placeholder="Enter your task"size="27">
+          <input type="text" id="tasktitle" v-model="newTask.title" required name="" value="" placeholder="Enter your task" size="27">
         </div>
         <div class="">
           <label for="tasktime">Time: </label>
-          <input type="number" min="1" id="tasktime" v-model="newTask.time" required name="" value="0" class="rangeTime">
+          <input type="number" min="1" id="tasktime" v-model="newTask.time" required name="" value="1" class="rangeTime">
         </div>
           <!-- <br> -->
         <div class="">
@@ -33,8 +37,8 @@
 
       <div class="contentTask">
         <h2 v-show="totalTask<1">Everything OK</h2>
-        <div v-for="(t,index) in tasks">
-          <div class="tasks":key="t.index">
+        <div v-for="(t,index) in tasks" :key="t.index">
+          <div class="tasks" >
 
             <input type="button" class="delete" @click="removeTask(index)" name="" value="Delete Task">
             <span id="titulos">
@@ -64,7 +68,7 @@ export default {
   data () {
     return {
       name: '',
-      newTask:{title:"", time:0},
+      newTask:{title:"", time:''},
       tasks:[],
       saved: true
     }
@@ -72,11 +76,11 @@ export default {
   methods:{
     addTask(){
       this.tasks.push(this.newTask)
-      this.newTask={title:"", time:0}
+      this.newTask={title:"", time:''}
       localStorage.setItem('tasks', JSON.stringify(this.tasks))
     },
     cancel(){
-      this.newTask={title:"", time:0}
+      this.newTask={title:"", time:''}
     },
     removeTask(index){
       console.log(index)
@@ -117,7 +121,7 @@ export default {
 
 <style>
   #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    font-family: 'Lato', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
@@ -134,10 +138,15 @@ export default {
     padding: 10px;
     margin: 10%;
     font-size: 3.5rem;
-    color:white;
     border-radius: 1rem;
     cursor: pointer;
   }
+
+  .banner a{
+    color:white;
+
+  }
+
   .contentTask{
     border-top: solid grey;
     border-bottom: solid grey;
@@ -178,22 +187,28 @@ export default {
   }
   .change{
     background: rgb(72, 201, 151);
-    font-size: 1.2rem;
-    margin: 3px;
-    padding: 3px;
+    font-size: 1.4rem;
+    margin: 10px;
+    padding: 6px;
     border-radius: 20%;
     cursor: pointer;
+    transition: all .3s;
   }
 
-  .addTask{
+  .change:hover{
+    background-color: rgb(31, 135, 95) ;
+    color: #fff;
+  }
+
+  .change:active{
+    font-size: .95rem;
+  }
+
+  .addTask, .save{
     background: rgb(44, 172, 118);
-    border-style: none;
-    padding: 5px;
-    border-radius: 1rem;
-    cursor: pointer;
   }
   .rangeTime:out-of-range{
-    background-color: rgba(255, 0, 0, 0.42);
+    background-color: rgba(202, 9, 9, 0.192);
     border-style: none;
     color:rgb(255, 255, 255);
   }
@@ -224,7 +239,7 @@ export default {
   }
   a{
     text-decoration: none;
-    margin: 5px 0;
+    margin: 10px 0;
   }
   form{
     align-items: center;
@@ -239,10 +254,51 @@ export default {
   input{
     margin: 5px;
     transition: .2s;
+    outline: none;
+  }
+  input[type="text"], input[type="number"]{
+    border-radius: .5rem;
+    padding: 5px;
+    border: 0;
   }
 
   input[type="button"], input[type="submit"], input[type="text"], input[type="number"]{
     font-size: 1em;
+  }
+
+  button, input[type="button"], input[type="submit"]{
+    font-size: 1em;
+    padding: 7px;
+    color: #fff;
+    background: ;
+    border: 0;
+    outline: none;
+    cursor: pointer;    
+    border-radius: 10px;
+    transition: all .2s;
+    border-bottom: 3px solid #808080;
+  }
+
+  input[type="button"]{
+    background-color: rgb(189, 35, 61);
+    border-bottom: 3px solid rgb(192, 33, 81);
+  }  
+
+  input[type="button"]:hover{
+    background-color: rgb(145, 20, 41);
+  }
+
+  button:hover, 
+  input[type="button"]:hover, 
+  input[type="submit"]:hover{
+    box-shadow: 0 2px 2px 1px #2c3e50;
+    border-bottom: 3px solid #2c3e50;
+  }
+
+  button:active, 
+  input[type="button"]:active, 
+  input[type="submit"]:active{
+    transform: scale(.95);
   }
 
   @media screen and (max-width: 900px){

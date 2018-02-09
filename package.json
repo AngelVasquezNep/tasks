@@ -29,5 +29,19 @@
     "vue-template-compiler": "^2.4.4",
     "webpack": "^3.6.0",
     "webpack-dev-server": "^2.9.1"
-  }
+  },
+  "main": "webpack.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AngelVasquezNep/tasks.git"
+  },
+  "keywords": [
+    "Vue",
+    "js",
+    "tasks"
+  ],
+  "bugs": {
+    "url": "https://github.com/AngelVasquezNep/tasks/issues"
+  },
+  "homepage": "https://github.com/AngelVasquezNep/tasks#readme"
 }
