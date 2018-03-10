@@ -3,9 +3,9 @@
     <!-- <p>Soy: {{name}}</p> -->
       <div id="banner" >
         <img src="dist/background.jpg" alt="image background">
-        <div class="banner">
-          <a href="#tasks">Add your task</a>
-          </div>
+        <div class="banner" @click="bajar">
+          Add your task
+        </div>
       </div>
 
       <h1 id="tasks">Notes by {{name}}</h1>
@@ -26,7 +26,7 @@
           <input type="number" min="1" id="tasktime" v-model="newTask.time" required name="" value="1" class="rangeTime">
         </div>
           <!-- <br> -->
-        <div class="">
+        <div class="botones">
           <input type="submit" name="" class="addTask" value="AddTask">
           <input type="button" name="" @click="cancel" value="Cancel">
         </div>
@@ -55,8 +55,12 @@
       <footer>
         <p>Thank you for visiting us.</p>
         <p>By Angel Vasquez</p>
-        <a href="https://github.com/AngelVasquezNep" target="_blank">GitHub</a>
-        <a href="https://twitter.com/angelvasqueznep" target="_blank">Twitter</a>
+        <a href="https://github.com/AngelVasquezNep" target="_blank">
+        <span><img src="/src/assets/github.png" alt="github"></span>GitHub
+        </a>
+        <a href="https://twitter.com/angelvasqueznep" target="_blank">
+        <span><img src="/src/assets/twitter.png" alt="github"></span>Twitter
+        </a>
       </footer>
 
 </div>
@@ -94,6 +98,13 @@ export default {
     changeUser(){
       this.saved=false
       localStorage.setItem('name', JSON.stringify(this.name))
+    },
+    bajar(){
+      const $objetivo = document.getElementById("tasks")
+      $objetivo.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+      })
     }
 
   },
@@ -140,12 +151,9 @@ export default {
     font-size: 3.5rem;
     border-radius: 1rem;
     cursor: pointer;
-  }
-
-  .banner a{
     color:white;
-
   }
+
 
   .contentTask{
     border-top: solid grey;
@@ -219,14 +227,22 @@ export default {
     margin: 0;
     width: 100%;
     display: flex;
-    padding: 1.5rem 0;
-    flex-direction: column;
+    padding: 1rem 0;
+    /* flex-direction: column; */
     align-items: center;
     justify-content:center;
-    min-height: 120px;
+    min-height: 20px;
     color: rgb(255, 255, 255);
     margin-top: 3rem;
   }
+  footer p, footer a, footer span {
+    padding: 10px 20px
+  }
+
+  footer span img {
+    width: 16px;
+  }
+
   h1{
     display: inline-block;
   }
@@ -270,7 +286,6 @@ export default {
     font-size: 1em;
     padding: 7px;
     color: #fff;
-    background: ;
     border: 0;
     outline: none;
     cursor: pointer;    
@@ -299,6 +314,10 @@ export default {
   input[type="button"]:active, 
   input[type="submit"]:active{
     transform: scale(.95);
+  }
+
+  input:focus {
+    box-shadow: 0 0 0 2px  aqua;
   }
 
   @media screen and (max-width: 900px){
