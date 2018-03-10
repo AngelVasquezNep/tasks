@@ -56,10 +56,10 @@
         <p>Thank you for visiting us.</p>
         <p>By Angel Vasquez</p>
         <a href="https://github.com/AngelVasquezNep" target="_blank">
-        <span><img src="./assets/github.png" alt="github"></span>GitHub
+        <span><img src="/src/assets/github.png" alt="github"></span>GitHub
         </a>
         <a href="https://twitter.com/angelvasqueznep" target="_blank">
-        <span><img src="./assets/twitter.png" alt="github"></span>Twitter
+        <span><img src="/src/assets/twitter.png" alt="github"></span>Twitter
         </a>
       </footer>
 
